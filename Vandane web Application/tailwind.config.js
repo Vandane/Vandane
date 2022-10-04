@@ -15,7 +15,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Albert: ["Albert Sans"],
-        Molle: ["Molle", "cursive"],
+        Molle: ["Molle"],
       },
       colors: {
         brightRed: "rgb(239 68 68 /1)",
