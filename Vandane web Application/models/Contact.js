@@ -17,13 +17,13 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: [true, "please enter email"],
     validate: [isValidEmail, "please enter valid email"],
-    maxlength: [50, "password  must minlength of 50 character"],
+    maxlength: [50, "email  must minlength of 50 character"],
   },
   phone: {
     type: String,
     required: [true, "please enter phone"],
-    maxlength: [12, "password  must maxlength of 12 character"],
-    minlength: [10, "password  must minlength of 10 character"],
+    maxlength: [12, "phone  must maxlength of 12 character"],
+    minlength: [10, "phone  must minlength of 10 character"],
   },
   message: {
     type: String,

@@ -28,8 +28,8 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      maxlength: [12, "password length must maxlength of 12 character"],
-      minlength: [10, "password length must minlength of 10 character"],
+      maxlength: [12, "phone length must maxlength of 12 character"],
+      minlength: [10, "phone length must minlength of 10 character"],
     },
     isVerified: {
       type: Boolean,
