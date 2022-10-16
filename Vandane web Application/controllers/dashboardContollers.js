@@ -30,6 +30,7 @@ module.exports.changeUserRole = async (req, res) => {
         isAdmin: value,
       },
     });
+    const token = req.cookies.Auth_Token;
     jwt.verify(token, process.env.JWT_SECRET + userData.password, async (err, decodedToken) => {
       if (err) {
         res.status(404).render("./error/404");
