@@ -24,12 +24,13 @@ module.exports.changeUserRole = async (req, res) => {
   try {
     const id = req.query.id;
     const value = req.query.isAdmin;
+    const userData = await User.findByIdAndDelete(id);
     const user = await User.findByIdAndUpdate(id.replace(" ", ""), {
       $set: {
         isAdmin: value,
       },
     });
-    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET + userData.password, async (err, decodedToken) => {
       if (err) {
         res.status(404).render("./error/404");
         next();
@@ -51,7 +52,7 @@ module.exports.deleteUsers = async (req, res) => {
     const id = req.query.id;
     const user = await User.findByIdAndDelete(id);
     const token = req.cookies.Auth_Token;
-    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET + user.password, async (err, decodedToken) => {
       if (err) {
         res.status(404).render("./error/404");
         next();
